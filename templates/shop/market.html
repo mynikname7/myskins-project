@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>MySkins - Продажа скинов CS2</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #0f0f0f;
+            font-family: 'Orbitron', Arial, sans-serif;
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            width: 100%;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.7);
+            box-shadow: 0 2px 10px #39ff14;
+            animation: slideDown 1s ease forwards;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 900;
+            color: #39ff14;
+            text-shadow: 0 0 10px #39ff14, 0 0 20px #39ff14;
+        }
+
+        .account {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #ffffff;
+            background-color: #1a1a1a;
+            padding: 10px 20px;
+            border-radius: 20px;
+            box-shadow: 0 0 10px #39ff14;
+            transition: 0.3s;
+        }
+
+        .account:hover {
+            background-color: #39ff14;
+            color: #0f0f0f;
+            cursor: pointer;
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            padding: 50px 20px;
+            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+        }
+
+        .skins-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 30px;
+            width: 100%;
+            max-width: 1200px;
+            animation: fadeIn 1.5s ease forwards;
+        }
+
+        .skin-card {
+            background-color: #1c1c1c;
+            border: 2px solid #39ff14;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 0 10px #39ff14;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .skin-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .skin-card h3 {
+            font-size: 1.1rem;
+            margin: 10px 0;
+        }
+
+        .skin-card p {
+            font-size: 1rem;
+            color: #a0ffa0;
+            margin-bottom: 10px;
+        }
+
+        .skin-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px #39ff14, 0 0 40px #39ff14;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(0); }
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">MySkins</div>
+        <div class="account">
+            {{ user.username }}
+        </div>
+    </header>
+
+    <main>
+        <div class="skins-container">
+            <!-- Пример карточки скина -->
+            <div class="skin-card">
+                <img src="https://via.placeholder.com/200x200?text=Skin" alt="Skin Image">
+                <h3>AWP | Dragon Lore</h3>
+                <p>Цена: 1200$</p>
+            </div>
+
+            <div class="skin-card">
+                <img src="https://via.placeholder.com/200x200?text=Skin" alt="Skin Image">
+                <h3>AK-47 | Redline</h3>
+                <p>Цена: 50$</p>
+            </div>
+
+            <!-- Здесь будет вывод карточек скинов через цикл Django -->
+            {% for skin in skins %}
+                <div class="skin-card">
+                    <img src="{{ skin.image_url }}" alt="{{ skin.name }}">
+                    <h3>{{ skin.name }}</h3>
+                    <p>Цена: {{ skin.price }}$</p>
+                </div>
+            {% endfor %}
+        </div>
+    </main>
+</body>
+</html>

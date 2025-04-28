@@ -1,0 +1,113 @@
+<form method="POST">
+    {% csrf_token %}
+    <style>
+    body {
+        background-color: #FFFFE0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+        font-family: Arial, sans-serif;
+    }
+
+    form {
+        background-color: rgba(255, 255, 255, 0.95);
+        padding: 40px 30px;
+        border-radius: 15px;
+        box-shadow: 0 0 30px #39ff14, 0 0 60px #39ff14;
+        width: 350px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        animation: riseUp 1s ease forwards;
+    }
+
+    .input-block {
+        display: flex;
+        flex-direction: column;
+    }
+
+    label {
+        margin-bottom: 5px;
+        font-weight: bold;
+        color: #2c2c2c;
+        font-size: 1rem;
+        letter-spacing: 1px;
+    }
+
+    input {
+        padding: 10px;
+        border: 2px solid #39ff14;
+        border-radius: 8px;
+        background-color: #f9f9f9;
+        font-size: 1rem;
+        font-family: 'Courier New', Courier, monospace;
+        transition: 0.3s ease;
+    }
+
+    input:focus {
+        outline: none;
+        background-color: #f0fff0;
+        box-shadow: 0 0 10px #39ff14;
+    }
+
+    .button-block {
+        display: flex;
+        justify-content: center;
+    }
+
+    .button-block button {
+        padding: 12px 25px;
+        font-weight: 900;
+        font-size: 1.1rem;
+        border: 2px solid #39ff14;
+        border-radius: 10px;
+        background-color: rgba(155, 89, 182, 0.1);
+        color: #000;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        box-shadow:
+            0 0 10px #39ff14,
+            0 0 40px #39ff14;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .button-block button:hover {
+        background-color: rgba(57, 255, 20, 0.1);
+        color: #fff;
+        box-shadow:
+            0 0 20px #39ff14,
+            0 0 60px #39ff14,
+            0 0 100px #39ff14;
+        border-color: #39ff14;
+    }
+
+    @keyframes riseUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+    <div class="input-block">
+        <label for="email">Email</label>
+        <input id="email" type="text" name="email">
+    </div>
+    <div class="input-block">
+        <label for="password1">Пароль</label>
+        <input id="password1" type="password" name="password">
+    </div>
+    <div class="input-block">
+        <label for="password2">Повторите пароль</label>
+        <input id="password2" type="password" name="password2">
+    </div>
+    <div class="button-block">
+        <button type="submit">Зарегистрироваться</button>
+    </div>
+</form>

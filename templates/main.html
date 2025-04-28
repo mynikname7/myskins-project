@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MySkins</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #FFFFE0;
+        }
+
+        h1 {
+            position: absolute;
+            top: 10px;
+            font-size: 4.5rem;
+            color: #333;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+            font-family: 'Courier New', Courier, monospace;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #2c2c2c;
+            opacity: 0;
+            transform: translateY(-20px);
+            animation: fadeIn 1s ease forwards;
+        }
+        @keyframes fadeIn {
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        .button-container {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 20px;
+          margin-top: 50px;
+          animation: fadeIn 1s ease-in-out forwards;
+        }
+
+        .cyber-btn {
+          display: inline-block;
+          padding: 15px 40px;
+          font-weight: 900;
+          width: 250px;
+          text-align: center;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 1.2rem;
+          font-family: 'Orbitron', sans-serif;
+          color: #000000;
+          border: 2px solid #39ff14;
+          text-decoration: none;
+          text-transform: uppercase;
+          letter-spacing: 2px;
+          border-radius: 10px;
+          box-shadow:
+          0 0 10px 	#39ff14,
+          0 0 40px 	#39ff14;
+          background-color: rgba(155, 89, 182, 0.1)
+          transition: all 0.3s ease;
+          opacity: 0;
+          transform: translateY(20px);
+          animation: riseUp 1.2s ease forwards;
+
+        }
+
+        .cyber-btn:nth-child(2) {
+          animation-delay: 0.2s;
+        }
+        .cyber-btn:nth-child(3) {
+          animation-delay: 0.4s;
+        }
+
+        .cyber-btn:hover {
+        background-color: rgba(57, 255, 20, 0.1); /* Слегка зеленоватый фон */
+        box-shadow:
+        0 0 20px #39ff14,
+        0 0 60px #39ff14,
+        0 0 100px #39ff14;
+        color: #fff;
+        border-color: #39ff14;
+}
+
+
+        @keyframes fadeIn {
+          to {
+            opacity: 1;
+          }
+        }
+
+        @keyframes riseUp {
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+    </style>
+</head>
+<body>
+    <h1>MySkins</h1>
+
+        <div class="button-container">
+            <a href="{% url 'reg' %}" class="cyber-btn">Registration</a>
+            <a href="{% url 'login' %}" class="cyber-btn">Login</a>
+        </div>
+</body>
+</html>
