@@ -1,22 +1,23 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .forms import PostForm
-from .models import Post
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect,HttpResponse
 
-
-
-from django.shortcuts import render
-from .forms import PostForm
-from .models import Post
-from django.http import HttpResponse
-
+# Добавим декоратор для проверки авторизации
+@login_required
 def create_post(request):
     if request.method == "POST":
         form = PostForm(request.POST)
         if form.is_valid():
             post = form.save(commit=False)
-            post.author = request.user
+
+            # Используем текущего авторизованного пользователя
+            myuser = request.user
+
+            # Присваиваем пользователя автором поста
+            post.author = myuser
             post.save()
+
             return HttpResponse("<h1>Твой предмет зарегистрирован</h1>")
         else:
             return HttpResponse("<h1>Ошибка валидации</h1>")

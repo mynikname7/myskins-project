@@ -19,11 +19,13 @@ from django.urls import path
 from front import views
 from regist import views as regview
 from blog import views as blview
+from lenta import views as leviews
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("",views.index),
     path("register/",regview.register,name = "reg"),
     path("login/",regview.login_user,name = "login"),
-    path("post/",blview.create_post,name = "post")
+    path("post/",blview.create_post,name = "post"),
+    path("lenta/",leviews.scrol,name = "lenta")
 ]

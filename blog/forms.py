@@ -53,4 +53,4 @@ class PostForm(forms.ModelForm):
 
     class Meta:
         model = Post
-        fields = ['category', 'nameteg', 'Degree', 'body']
+        fields = ['category', 'nameteg', 'Degree', 'body']  # автоматом взаимодействует моедль

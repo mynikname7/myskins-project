@@ -1,152 +1,101 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>MySkins - Продажа скинов CS2</title>
+    <title>MySkins - Shop</title>
     <style>
         body {
             margin: 0;
-            padding: 0;
-            background-color: #0f0f0f;
-            font-family: 'Orbitron', Arial, sans-serif;
-            color: white;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #1b1b1b;
+            color: #e0e0e0;
         }
 
         header {
-            width: 100%;
-            padding: 20px 50px;
+            background-color: #121212;
+            color: #39ff14;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background-color: rgba(0, 0, 0, 0.7);
-            box-shadow: 0 2px 10px #39ff14;
-            animation: slideDown 1s ease forwards;
+            padding: 20px 40px;
+            box-shadow: 0 0 15px #39ff14;
         }
 
         .logo {
-            font-size: 2rem;
-            font-weight: 900;
-            color: #39ff14;
-            text-shadow: 0 0 10px #39ff14, 0 0 20px #39ff14;
+            font-size: 28px;
+            font-weight: bold;
+            text-shadow: 0 0 5px #39ff14;
         }
 
-        .account {
-            font-size: 1rem;
-            font-weight: 600;
-            color: #ffffff;
-            background-color: #1a1a1a;
-            padding: 10px 20px;
-            border-radius: 20px;
-            box-shadow: 0 0 10px #39ff14;
-            transition: 0.3s;
-        }
-
-        .account:hover {
-            background-color: #39ff14;
-            color: #0f0f0f;
-            cursor: pointer;
+        .account, .datetime {
+            font-size: 16px;
+            color: #8aff8a;
         }
 
         main {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            padding: 50px 20px;
-            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+            padding: 40px;
         }
 
-        .skins-container {
+        .scrol {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
-            width: 100%;
-            max-width: 1200px;
-            animation: fadeIn 1.5s ease forwards;
         }
 
-        .skin-card {
-            background-color: #1c1c1c;
+        .skin-item {
+            background-color: #2a2a2a;
             border: 2px solid #39ff14;
-            border-radius: 15px;
+            border-radius: 12px;
             padding: 20px;
-            text-align: center;
-            box-shadow: 0 0 10px #39ff14;
-            transition: transform 0.3s, box-shadow 0.3s;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            box-shadow: 0 0 12px rgba(57, 255, 20, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .skin-card img {
-            width: 100%;
-            height: auto;
-            border-radius: 10px;
-            margin-bottom: 15px;
+        .skin-item:hover {
+            transform: scale(1.03);
+            box-shadow: 0 0 20px #39ff14;
         }
 
-        .skin-card h3 {
-            font-size: 1.1rem;
-            margin: 10px 0;
+        .skin-item h3 {
+            margin-top: 0;
+            font-size: 22px;
+            color: #7effa7;
+            text-shadow: 0 0 3px #39ff14;
         }
 
-        .skin-card p {
-            font-size: 1rem;
-            color: #a0ffa0;
-            margin-bottom: 10px;
+        .skin-item p {
+            margin: 8px 0;
+            font-size: 15px;
+            color: #ccc;
         }
 
-        .skin-card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 20px #39ff14, 0 0 40px #39ff14;
+        .skin-item p strong {
+            color: #39ff14;
         }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(50px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes slideDown {
-            from { transform: translateY(-100%); }
-            to { transform: translateY(0); }
-        }
-
     </style>
 </head>
+
 <body>
-    <header>
-        <div class="logo">MySkins</div>
-        <div class="account">
-            {{ user.username }}
+<header>
+    <div class="logo">MySkins</div>
+    <div class="account">{{ user.username }}</div>
+    <div class="datetime">{% now 'H:i' %}</div>
+</header>
+
+<main>
+    <div class="scrol">
+        {% for item in skins %}
+        <div class="skin-item">
+            <h3>{{ item.nameteg }}</h3>
+            <img src="{% static  'item.icons' %}", width="150">
+            <p><strong>Категория:</strong> {{ item.category }}</p>
+            <p><strong>Степень износа:</strong> {{ item.Degree }}</p>
+            <p><strong>Цена:</strong> {{ item.body }}₽</p>
+            <p><strong>Автор:</strong> {{ item.author.username }}</p>
         </div>
-    </header>
-
-    <main>
-        <div class="skins-container">
-            <!-- Пример карточки скина -->
-            <div class="skin-card">
-                <img src="https://via.placeholder.com/200x200?text=Skin" alt="Skin Image">
-                <h3>AWP | Dragon Lore</h3>
-                <p>Цена: 1200$</p>
-            </div>
-
-            <div class="skin-card">
-                <img src="https://via.placeholder.com/200x200?text=Skin" alt="Skin Image">
-                <h3>AK-47 | Redline</h3>
-                <p>Цена: 50$</p>
-            </div>
-
-            <!-- Здесь будет вывод карточек скинов через цикл Django -->
-            {% for skin in skins %}
-                <div class="skin-card">
-                    <img src="{{ skin.image_url }}" alt="{{ skin.name }}">
-                    <h3>{{ skin.name }}</h3>
-                    <p>Цена: {{ skin.price }}$</p>
-                </div>
-            {% endfor %}
-        </div>
-    </main>
+        {% endfor %}
+    </div>
+</main>
 </body>
 </html>
