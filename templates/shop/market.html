@@ -5,75 +5,185 @@
     <meta charset="UTF-8">
     <title>MySkins - Shop</title>
     <style>
-        body {
-            margin: 0;
-            font-family: 'Segoe UI', sans-serif;
-            background-color: #1b1b1b;
-            color: #e0e0e0;
-        }
+    body {
+        margin: 0;
+        background: url("{% static 'gif/city.gif' %}") no-repeat center center fixed;
+        background-size: cover;
+        font-family: 'Segoe UI', sans-serif;
+        background-color: #1b1b1b;
+        color: #e0e0e0;
+    }
 
-        header {
-            background-color: #121212;
-            color: #39ff14;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 40px;
-            box-shadow: 0 0 15px #39ff14;
-        }
+    header {
+        background-color: #121212;
+        color: #a855f7;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 40px;
+        box-shadow: 0 0 15px #a855f7;
+    }
 
-        .logo {
-            font-size: 28px;
-            font-weight: bold;
-            text-shadow: 0 0 5px #39ff14;
-        }
+    .logo {
+        font-size: 28px;
+        font-weight: bold;
+        text-shadow: 0 0 5px #a855f7;
+    }
 
-        .account, .datetime {
-            font-size: 16px;
-            color: #8aff8a;
-        }
+    .account, .datetime {
+        font-size: 16px;
+        color: #d8b4fe;
+    }
 
-        main {
-            padding: 40px;
-        }
+    main {
+        padding: 40px;
+    }
 
-        .scrol {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
+    .scrol {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
+    }
 
-        .skin-item {
-            background-color: #2a2a2a;
-            border: 2px solid #39ff14;
-            border-radius: 12px;
-            padding: 20px;
-            box-shadow: 0 0 12px rgba(57, 255, 20, 0.2);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
+    .skin-item {
+        background-color: #2a2a2a;
+        border: 2px solid #a855f7;
+        border-radius: 12px;
+        padding: 20px;
+        box-shadow: 0 0 12px rgba(168, 85, 247, 0.2);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
 
-        .skin-item:hover {
-            transform: scale(1.03);
-            box-shadow: 0 0 20px #39ff14;
-        }
+    .skin-item:hover {
+        transform: scale(1.03);
+        box-shadow: 0 0 20px #a855f7;
+    }
 
-        .skin-item h3 {
-            margin-top: 0;
-            font-size: 22px;
-            color: #7effa7;
-            text-shadow: 0 0 3px #39ff14;
-        }
+    .skin-item h3 {
+        margin-top: 0;
+        font-size: 22px;
+        color: #d8b4fe;
+        text-shadow: 0 0 3px #a855f7;
+    }
 
-        .skin-item p {
-            margin: 8px 0;
-            font-size: 15px;
-            color: #ccc;
-        }
+    .skin-item p {
+        margin: 8px 0;
+        font-size: 15px;
+        color: #ccc;
+    }
 
-        .skin-item p strong {
-            color: #39ff14;
-        }
-    </style>
+    .skin-item p strong {
+        color: #a855f7;
+    }
+
+    .button-buy {
+        display: inline-block;
+        margin: 20px;
+        font-family: 'Arial', sans-serif;
+    }
+
+    .button-buy a {
+        position: relative;
+        display: inline-block;
+        padding: 15px 40px;
+        background: linear-gradient(135deg, #a855f7, #6b21a8);
+        color: white;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-weight: 600;
+        letter-spacing: 1px;
+        border-radius: 50px;
+        box-shadow: 0 4px 12px rgba(168, 85, 247, 0.3);
+        overflow: hidden;
+        transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+
+    .button-buy a:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(168, 85, 247, 0.4);
+        background: linear-gradient(135deg, #6b21a8, #a855f7);
+    }
+
+    .button-buy a:active {
+        transform: translateY(1px);
+        box-shadow: 0 2px 8px rgba(168, 85, 247, 0.4);
+    }
+
+    .button-buy a::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.1);
+        transform: scaleX(0);
+        transform-origin: right;
+        transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+
+    .button-buy a:hover::after {
+        transform: scaleX(1);
+        transform-origin: left;
+    }
+
+    .button-buy a span {
+        position: relative;
+        z-index: 2;
+        display: inline-block;
+        transition: transform 0.3s ease;
+    }
+
+    .button-buy a:hover span {
+        transform: scale(1.05);
+    }
+        .paginatation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 230px auto 60px auto;
+    font-size: 16px;
+    text-align: center;
+}
+
+.paginatation .step {
+    display: flex;
+    gap: 16px;
+    background-color: #1f1f1f;
+    padding: 14px 28px;
+    border-radius: 30px;
+    box-shadow: 0 4px 12px rgba(168, 85, 247, 0.3);
+}
+
+.paginatation a {
+    color: #d8b4fe;
+    text-decoration: none;
+    padding: 8px 16px;
+    background: linear-gradient(135deg, #a855f7, #6b21a8);
+    border-radius: 25px;
+    font-weight: bold;
+    box-shadow: 0 2px 8px rgba(168, 85, 247, 0.25);
+    transition: all 0.3s ease;
+}
+
+.paginatation a:hover {
+    background: linear-gradient(135deg, #6b21a8, #a855f7);
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
+.paginatation .current {
+    color: #ffffff;
+    font-weight: bold;
+    background-color: #2e2e2e;
+    padding: 8px 16px;
+    border-radius: 20px;
+    border: 2px solid #a855f7;
+}
+
+
+</style>
+
 </head>
 
 <body>
@@ -85,16 +195,34 @@
 
 <main>
     <div class="scrol">
-        {% for item in skins %}
+        {% for item in page_obj %}
         <div class="skin-item">
             <h3>{{ item.nameteg }}</h3>
-            <img src="{% static  'item.icons' %}", width="150">
+            <img src="/static/{{ item.icon }}" width="150">
             <p><strong>Категория:</strong> {{ item.category }}</p>
             <p><strong>Степень износа:</strong> {{ item.Degree }}</p>
             <p><strong>Цена:</strong> {{ item.body }}₽</p>
             <p><strong>Автор:</strong> {{ item.author.username }}</p>
+            <div class = "button-buy">
+                <a href = "{% url 'buy' %}" >Купить</a>
+            </div>
+
         </div>
         {% endfor %}
+    </div>
+    <div class = "paginatation">
+            <span class = "step">
+                {% if page_obj.has_previous %}
+                    <a href = "?page={{ page_obj.previous_page_number }}">‹ Назад</a>
+                {% endif %}
+                <span class = "current">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                </span>
+            {% if page_obj.has_next%}
+            <a href = "?page={{page_obj.next_page_number }}">Вперёд ›</a>
+            {% endif %}
+            </span>
+
     </div>
 </main>
 </body>

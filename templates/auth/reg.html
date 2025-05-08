@@ -1,8 +1,10 @@
+{% load static %}
 <form method="POST">
     {% csrf_token %}
     <style>
     body {
-        background-color: #FFFFE0;
+        background: url("{% static 'gif/2djy.gif' %}") no-repeat center center fixed;
+        background-size: cover;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -48,8 +50,8 @@
 
     input:focus {
         outline: none;
-        background-color: #f0fff0;
-        box-shadow: 0 0 10px #39ff14;
+        background-color: 	#FFFAFA;
+        box-shadow: 0 0 15px #39ff14;
     }
 
     .button-block {
@@ -68,10 +70,10 @@
         letter-spacing: 2px;
         text-transform: uppercase;
         box-shadow:
-            0 0 10px #39ff14,
-            0 0 40px #39ff14;
+            0 0 10px 	#FFFAFA,
+            0 0 40px 	#FFFAFA;
         cursor: pointer;
-        transition: all 0.3s ease;
+        transition: all 0.5s ease;
     }
 
     .button-block button:hover {

@@ -27,5 +27,6 @@ urlpatterns = [
     path("register/",regview.register,name = "reg"),
     path("login/",regview.login_user,name = "login"),
     path("post/",blview.create_post,name = "post"),
-    path("lenta/",leviews.scrol,name = "lenta")
+    path("lenta/",leviews.scrol,name = "lenta"),
+    path("buy/",leviews.buy_item,name = "buy")
 ]

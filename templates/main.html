@@ -1,119 +1,103 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>MySkins</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            background-color: #FFFFE0;
-        }
+  <meta charset="UTF-8">
+  <title>MySkins</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
-        h1 {
-            position: absolute;
-            top: 10px;
-            font-size: 4.5rem;
-            color: #333;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
-            font-family: 'Courier New', Courier, monospace;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: #2c2c2c;
-            opacity: 0;
-            transform: translateY(-20px);
-            animation: fadeIn 1s ease forwards;
-        }
-        @keyframes fadeIn {
-          to {
+  <style>
+    body {
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+        background: url("{% static 'gif/yargon-kerman-webp-net-gifmaker-39.gif' %}") no-repeat center center fixed;
+        background-size: cover;
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    @keyframes fadeRise {
+        to {
             opacity: 1;
             transform: translateY(0);
-          }
         }
-        .button-container {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 20px;
-          margin-top: 50px;
-          animation: fadeIn 1s ease-in-out forwards;
-        }
+    }
 
-        .cyber-btn {
-          display: inline-block;
-          padding: 15px 40px;
-          font-weight: 900;
-          width: 250px;
-          text-align: center;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          font-size: 1.2rem;
-          font-family: 'Orbitron', sans-serif;
-          color: #000000;
-          border: 2px solid #39ff14;
-          text-decoration: none;
-          text-transform: uppercase;
-          letter-spacing: 2px;
-          border-radius: 10px;
-          box-shadow:
-          0 0 10px 	#39ff14,
-          0 0 40px 	#39ff14;
-          background-color: rgba(155, 89, 182, 0.1)
-          transition: all 0.3s ease;
-          opacity: 0;
-          transform: translateY(20px);
-          animation: riseUp 1.2s ease forwards;
+    .logo {
+        width: 400px;
+        max-width: 90%;
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeRise 1.2s ease-out forwards;
+        margin-bottom: 30px;
+    }
 
-        }
+    .button-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeRise 1.2s ease-out forwards;
+        animation-delay: 0s;
+        animation-fill-mode: forwards;
+    }
 
-        .cyber-btn:nth-child(2) {
-          animation-delay: 0.2s;
-        }
-        .cyber-btn:nth-child(3) {
-          animation-delay: 0.4s;
-        }
+    .cyber-btn {
+        display: inline-block;
+        padding: 15px 40px;
+        font-weight: 900;
+        width: 250px;
+        text-align: center;
+        font-size: 1.2rem;
+        font-family: 'Orbitron', sans-serif;
+        color: #000;
+        border: 2px solid #a855f7;
+        text-decoration: none;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        border-radius: 10px;
+        background-color: white;
+        box-shadow: 0 0 10px #a855f7, 0 0 40px #a855f7;
+        transition: all 0.3s ease;
+    }
 
-        .cyber-btn:hover {
-        background-color: rgba(57, 255, 20, 0.1); /* Слегка зеленоватый фон */
-        box-shadow:
-        0 0 20px #39ff14,
-        0 0 60px #39ff14,
-        0 0 100px #39ff14;
+    .cyber-btn:hover {
+        background-color: rgba(168, 85, 247, 0.1);
+        box-shadow: 0 0 20px #a855f7, 0 0 60px #a855f7, 0 0 100px #a855f7;
         color: #fff;
-        border-color: #39ff14;
-}
+        border-color: #a855f7;
+    }
+</style>
 
 
-        @keyframes fadeIn {
-          to {
-            opacity: 1;
-          }
-        }
-
-        @keyframes riseUp {
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-    </style>
 </head>
 <body>
-    <h1>MySkins</h1>
-
-        <div class="button-container">
-            <a href="{% url 'reg' %}" class="cyber-btn">Registration</a>
-            <a href="{% url 'login' %}" class="cyber-btn">Login</a>
-            <a href="{% url 'post' %}" class="cyber-btn">Sale items</a>
-            <a href="{% url 'lenta' %}" class="cyber-btn">Shop</a>
+  {% if messages %}
+    <div class="position-fixed top-0 end-0 p-3" style="z-index: 1050;">
+      {% for message in messages %}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+          {{ message }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Закрыть"></button>
         </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  <img src="{% static 'img/MySkinsLogo.png' %}" alt="MySkins Logo" class="logo">
+
+  <div class="button-container">
+      <a href="{% url 'reg' %}" class="cyber-btn">Registration</a>
+      <a href="{% url 'login' %}" class="cyber-btn">Login</a>
+      <a href="{% url 'post' %}" class="cyber-btn">Sale items</a>
+      <a href="{% url 'lenta' %}" class="cyber-btn">Shop</a>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
